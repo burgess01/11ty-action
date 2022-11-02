@@ -1,6 +1,12 @@
 on:
   push:
     branches: ["main"]
+    inputs:
+      directory:
+        description: 'A directory that contains your 11ty website'
+        default: 'site'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -15,16 +21,16 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - name: Build 11ty
+      - name: Build the website
         run: |
-          cd 11tysite
+          cd ${{ inputs.directory.name }}
           npm install
           npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1.0.4
         with:
-          name: 11tysite
-          path: ./11tysite/_site
+          name: ${{ inputs.directory.name }}
+          path: ./${{ inputs.directory.name }}/_site
           
   deploy:
     environment:
