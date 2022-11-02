@@ -18,8 +18,14 @@ runs:
   using: 'composite'
   steps:
     - uses: actions/checkout@v3
+    - uses: actions/configure-pages@v2
     - run: |
         cd ${{ inputs.directory }}
         npm install
         npm run build
       shell: bash
+    - uses: actions/configure-pages@v2
+      with:
+        name: ${{ inputs.directory }}
+        path: ./${{ inputs.directory }}/_site
+     
