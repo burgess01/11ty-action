@@ -1,6 +1,5 @@
 on:
-  push:
-    branches: ["main"]
+  workflow_dispatch:
     inputs:
       directory:
         description: 'A directory that contains your 11ty website'
@@ -22,6 +21,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build the website
+        with:
+          directory: ${{ inputs.directory.name }}
         run: |
           cd ${{ inputs.directory.name }}
           npm install
