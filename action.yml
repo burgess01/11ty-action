@@ -2,14 +2,12 @@ name: '11ty builder'
 description: 'action to build a 11ty website and publish it to Github Pages'
 author: 'Katherine Burgess, Douglas Luman'
 
-on:
-  workflow_dispatch:
-  inputs:
-    directory:
-      description: 'A directory that contains your 11ty website'
-      default: 'site'
-      required: true
-      type: string
+inputs:
+  directory:
+    description: 'A directory that contains your 11ty website'
+    default: 'site'
+    required: true
+    type: string
 
 permissions:
   contents: read
