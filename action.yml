@@ -25,9 +25,9 @@ jobs:
         uses: actions/configure-pages@v2
       - name: Build the website
         with:
-          directory: ${{ inputs.directory.name }}
+          directory: ${{ inputs.directory }}
         run: |
-          cd ${{ inputs.directory.name }}
+          cd ${{ inputs.directory }}
           npm install
           npm run build
       - name: Upload artifact
