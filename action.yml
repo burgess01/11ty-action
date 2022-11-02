@@ -17,17 +17,8 @@ permissions:
 runs:
   using: 'composite'
   steps:
-    - run: Checkout
-      uses: actions/checkout@v3
-    - run: Setup Pages
-      uses: actions/configure-pages@v2
-    - run: Build the website
-      shell: |
+    - run: |
         cd ${{ inputs.directory }}
         npm install
         npm run build
-    - run: Upload artifact
-      uses: actions/upload-pages-artifact@v1.0.4
-      with:
-        name: ${{ inputs.directory }}
-        path: ./${{ inputs.directory }}/_site
+      shell: bash
