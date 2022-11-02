@@ -23,8 +23,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build the website
-        with:
-          directory: ${{ inputs.directory }}
         run: |
           cd ${{ inputs.directory }}
           npm install
